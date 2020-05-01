@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<form action="ShowAllUsers.html">
+    <input id="returnButton" type="submit" value="Return to User Overview"><br>
+</form>
+<head>
+    <link rel="stylesheet" type="text/css" href="Style.css">
+    <meta charset="UTF-8">
+
+    <title>Opret bruger</title>
+
+</head>
+<body>
+
+<h1>Opret ny bruger</h1>
+<!-- Text fields for user-->
+<form action="brugeroversigt.html">
+    <label>Bruger ID: 1234</label><br>
+    <input type="text" placeholder="Username"><br>
+    <input type="text" placeholder="First Name"><br>
+    <input type="text" placeholder="Last name"><br>
+    <input type="text" placeholder="Intialer"><br> <!-- skal potentielt ikke være her  -->
+    <input type="text" placeholder="CPR-Nr"><br>
+    <input type="text" placeholder="Password"><br>
+
+
+
+<!-- checkbox for roles-->
+        <input type="checkbox" id="Administrator" value="Administrator">
+        <label for="Administrator">Administrator</label><br>
+        <input type="checkbox" id="Pharmaceut" value="’Pharmaceut’">
+        <label for="Pharmaceut">Pharmaceut</label><br>
+        <input type="checkbox" id="Production leader" value="Production leader">
+        <label for="Production leader">Production leader</label><br>
+        <input type="checkbox" id="Laboratory technician" value="Laboratory technician">
+        <label for="Laboratory technician">Laboratory technician</label>
+
+
+</form>
+<form>
+    <input id="submitButton" type="submit" class="primarybutton" value="Opret">
+</form>
+</body>
+</html>
