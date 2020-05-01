@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>formDemo.html</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="AddUser.css">
+    <script src="jquery-3.3.1.js"></script>
+    <script src="Agent.js"></script>
+</head>
+<body>
+<h1>Tilfoej bruger</h1>
+<div class="form">
+    <form id="myForm" class="form" action="javascript:addUser()">
+        <label for="userid">UserID</label>
+        <input id="userid" type="text" placeholder="Bruger id">
+
+        <label for="firstname">First name</label>
+        <input id="firstname" type="text" placeholder="Fornavn">
+
+        <label for="lastname">Last name</label>
+        <input id="lastname" type="text" placeholder="Efternavn">
+
+        <label for="initials">Initials</label>
+        <input id="initials" type="text" placeholder="Initialer">
+
+        <label for="cpr">Cpr</label>
+        <input id="cpr" type="text" placeholder="Cpr-nummer">
+
+        <label for="password">Password</label>
+        <input id="password" type="text" placeholder="Kodeord">
+
+        <label for="roller">Vaelg rolle</label>
+
+        <select id="roller">
+            <option value="admin">Admin</option>
+            <option value="pharmaceut">Pharmaceut</option>
+            <option value="produktionsleder">Produktionsleder</option>
+            <option value="laborant">Laborant</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<script src="api.js">
+</script>
+</body>
+</html>
+
+
