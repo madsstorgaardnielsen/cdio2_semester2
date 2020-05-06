@@ -1,0 +1,76 @@
+head {
+    font-family: "Times New Roman", serif;
+}
+
+input {
+    font-family: "Times New Roman", serif;
+    padding: 2px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.button-container form input{
+    font-family: "Times New Roman", serif;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.button-container form{
+     display: inline;
+}
+
+
+input[type=text]{
+    width: 15%;
+    padding: 6px;
+    line-height: 10pt;
+    margin-bottom: 10px ;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#submitButton[type=submit]:hover {
+    background-color: red;
+
+}
+#submitButton {
+    background-color: greenyellow;
+    width: 15%;
+    padding: 6px;
+    line-height: 10pt;
+    margin-top: 10px;
+    margin-bottom: 10px ;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+
+}
+
+select {
+    width: 15%;
+    padding: 6px;
+    line-height: 10pt;
+    margin-bottom: 10px ;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
