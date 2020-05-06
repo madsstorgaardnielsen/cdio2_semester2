@@ -12,17 +12,9 @@ public class DBConnection {
         String database = "cdio2db";
         String username = "root";
         String password = "12345678";
-/*
-        String url = "jdbc:mysql://" + host + ":" + port + "/" + database +
-                "?characterEncoding=latin1&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-                connection = DriverManager.getConnection(url);
-*/
-
         String jdbcUrl = "jdbc:mysql://" + host + ":" + port + "/" + database + "?user=" + username + "&password=" + password;
         connection = DriverManager.getConnection(jdbcUrl);
     }
-
-
 
     public void closeDBConnection() throws IOException {
         try {
