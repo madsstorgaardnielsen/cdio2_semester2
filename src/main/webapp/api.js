@@ -12,3 +12,28 @@ function addUser() {
         alert(xhr.responseJSON.message);
     });
 }
+
+function loadUsers() {
+    $("#userTableBody").empty();
+    //Hints: $.each(data, function(i, element){ } iterates over a JSON-collection (data).
+    // $('').append('html'), appends html to an html elemenut.
+    Agent.getJson("rest/user",
+        function (data) {
+            $.each(data, function (i, element) {
+                $("#userTable").append(generateUserHTML(element));
+            });
+        }
+    );
+}
+
+
+function generateUserHTML(user) {
+    return '<tr> <td class = userId>' + user.userId + '</td>' +
+        '<td class = role>' + user.role + '</td>' +
+        '<td class = firstName>' + user.firstName + '</td>' +
+        '<td class = lastName>' + user.lastName + '</td>' +
+        '<td class = ini>' + user.initials + '</td>' +
+        '<td class = cpr>' + user.cpr + '</td>' +
+        '<td> <form action="' +  + '"> <input type="submit" value="Delete"> </form>  </td>' +
+        '<td> <form action="' +  + '"> <input type="submit" value="Edit"> </form> </td> </tr>'
+}

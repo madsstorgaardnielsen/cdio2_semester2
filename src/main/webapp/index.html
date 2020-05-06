@@ -6,9 +6,12 @@
     <meta charset="UTF-8">
     <title>UserOverview</title>
 </head>
-<body>
+<body onload="loadUsers()">
+
 
 <h1>User Overview</h1>
+
+
 
 <!-- En knap der sender dig til en anden side, uden at bruge JavasScript-->
 <div class="button-container">
@@ -16,72 +19,33 @@
         <input type="submit" value="Search for user">
     </form>
     <form action="CreateUser.html">
-        <input type="submit" value="Create user">
+        <input type="submit" value="Create user" id="userCreate">
     </form>
 </div>
 
 
 <!-- Statisk tabel over brugere -->
-<table>
+<div>
+<table id="userTable">
+    <thead>
     <tr>
         <th>Bruger ID</th>
-        <th>Brugernavn</th>
         <th>Rolle</th>
         <th>Fornavn</th>
         <th>Efternavn</th>
+        <th>Initialer</th>
         <th>CPR-Nr</th>
         <th>Password</th>
 
         <th colspan="2"></th> <!-- Ekstra tom celle, så de matcher tabelstørrelsen-->
     </tr>
-
+    </thead>
     <!-- Bruger 1 -->
-    <tr>
-        <td>1</td>
-        <td>Sandersen</td>
-        <td>Admin</td>
-        <td>Sander</td>
-        <td>Johansen</td>
-        <td>1246786202</td>
-        <td>MujafasBIL</td>
+    <tbody id="userTableBody">
 
-
-        <!-- Vi kan tilføje andre elementer inde i en celle, i stedet for tekst -->
-        <td>
-            <form>
-                <input type="submit" value="Delete">
-            </form>
-        </td>
-        <td>
-            <form>
-                <input type="submit" value="Edit">
-            </form>
-        </td>
-    </tr>
-
-    <!-- Bruger 2 -->
-    <tr>
-        <td>2</td>
-        <td>JonasTheSock</td>
-        <td>Admin</td>
-        <td>Jonas</td>
-        <td>Pedersen</td>
-        <td>2412970293</td>
-        <td>SockTheCock</td>
-        <td>
-            <form>
-                <input type="submit" value="Delete">
-            </form>
-        </td>
-        <td>
-            <form>
-                <input type="submit" value="Edit">
-            </form>
-        </td>
-    </tr>
-
-
-    <!-- Bruger 3 -->
+    </tbody>
+   <!--
+     Bruger 3
     <tr>
         <td>3</td>
         <td>FrederikV</td>
@@ -92,7 +56,7 @@
         <td>SødePigerpåDTU</td>
 
 
-        <!-- Vi kan tilføje andre elementer inde i en celle, i stedet for tekst -->
+         Vi kan tilføje andre elementer inde i en celle, i stedet for tekst
         <td>
             <form>
                 <input type="submit" value="Delete">
@@ -104,7 +68,9 @@
             </form>
         </td>
     </tr>
+    -->
 </table>
+</div>
 </body>
 </html>
 
