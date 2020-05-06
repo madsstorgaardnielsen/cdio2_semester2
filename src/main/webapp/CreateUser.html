@@ -1,11 +1,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<form action="ShowAllUsers.html">
+<form action="index.html">
     <input id="returnButton" type="submit" value="Return to User Overview"><br>
 </form>
 <head>
     <link rel="stylesheet" type="text/css" href="Style.css">
+    <script src="jquery-3.3.1.js"></script>
+    <script src="Agent.js"></script>
     <meta charset="UTF-8">
 
     <title>Opret bruger</title>
@@ -15,19 +17,18 @@
 
 <h1>Opret ny bruger</h1>
 <!-- Text fields for user-->
-<form action="brugeroversigt.html">
-    <label>Bruger ID: 1234</label><br>
-    <input type="text" placeholder="Username"><br>
-    <input type="text" placeholder="First Name"><br>
-    <input type="text" placeholder="Last name"><br>
-    <input type="text" placeholder="Intialer"><br> <!-- skal potentielt ikke være her  -->
-    <input type="text" placeholder="CPR-Nr"><br>
-    <input type="text" placeholder="Password"><br>
+<form id="myForm" class="form" action="javascript:addUser()">
+    <input type="text" placeholder="User-ID" id="userid"><br>
+    <input type="text" placeholder="First Name" id="firstname"><br>
+    <input type="text" placeholder="Last name" id="lastname"><br>
+    <input type="text" placeholder="Intialer" id="initials"><br> <!-- skal potentielt ikke være her  -->
+    <input type="text" placeholder="CPR-Nr" id="cpr"><br>
+    <input type="text" placeholder="Password" id="password"><br>
 
 
 
-<!-- checkbox for roles-->
-        <input type="checkbox" id="Administrator" value="Administrator">
+<!-- checkbox for roles
+       <input type="checkbox" id="Administrator" value="Administrator">
         <label for="Administrator">Administrator</label><br>
         <input type="checkbox" id="Pharmaceut" value="’Pharmaceut’">
         <label for="Pharmaceut">Pharmaceut</label><br>
@@ -35,11 +36,19 @@
         <label for="Production leader">Production leader</label><br>
         <input type="checkbox" id="Laboratory technician" value="Laboratory technician">
         <label for="Laboratory technician">Laboratory technician</label>
+-->
 
+    <select id="roller">
+        <option value="admin">Admin</option>
+        <option value="pharmaceut">Pharmaceut</option>
+        <option value="produktionsleder">Produktionsleder</option>
+        <option value="laborant">Laborant</option>
+    </select>
+<div></div>
+    <button type="submit">Submit</button>
+</form>
 
-</form>
-<form>
-    <input id="submitButton" type="submit" class="primarybutton" value="Opret">
-</form>
+<script src="api.js">
+</script>
 </body>
 </html>
