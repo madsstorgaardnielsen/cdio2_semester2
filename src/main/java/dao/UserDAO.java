@@ -185,8 +185,6 @@ public class UserDAO {
         }
     }
 
-
-
     private void getUserInfo(ResultSet rs, UserDTO userDTO) throws SQLException {
         userDTO.setUserId(rs.getInt(1));
         userDTO.setFirstName(rs.getString(2));
@@ -195,8 +193,6 @@ public class UserDAO {
         userDTO.setCpr(rs.getString(5));
         userDTO.setPassword(rs.getString(6));
         userDTO.setRole(rs.getString(7));
-
-
     }
 }
 
