@@ -12,7 +12,6 @@ import java.sql.SQLException;
 
 @Path("user")
 public class UserService {
-    UserDAO userDAO;
 
     @GET
     @Path("{id}")
@@ -39,29 +38,29 @@ public class UserService {
     }
 
     @POST
+    @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteUser(UserDTO userDTO) throws Exception {
+    public Response deleteUser(@PathParam("id") int id) throws Exception {
         try {
-            UserDAO.getInstance().deleteUser(userDTO.getUserId());
+            UserDAO.getInstance().deleteUser(id);
             return Response.ok().build();
         } catch (SQLException | IOException throwables) {
             throw new Exception();
         }
     }
 
-    @POST
+    @PUT
+    @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateUser(UserDTO userDTO) throws Exception {
+    public Response updateUser(@PathParam("id") int id) throws Exception {
         try {
-            UserDAO.getInstance().updateUserName(userDTO);
-            UserDAO.getInstance().updateUserPassword(userDTO);
-            UserDAO.getInstance().updateUserCpr(userDTO);
-            UserDAO.getInstance().updateUserInitials(userDTO);
+            UserDAO.getInstance().updateUserName(id);
+            UserDAO.getInstance().updateUserPassword(id);
+            UserDAO.getInstance().updateUserCpr(id);
+            UserDAO.getInstance().updateUserInitials(id);
             return Response.ok().build();
         } catch (SQLException | IOException throwables) {
             throw new Exception();
         }
     }
-
-
 }
