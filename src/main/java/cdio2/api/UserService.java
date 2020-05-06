@@ -37,4 +37,31 @@ public class UserService {
             throw new Exception();
         }
     }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response deleteUser(UserDTO userDTO) throws Exception {
+        try {
+            UserDAO.getInstance().deleteUser(userDTO.getUserId());
+            return Response.ok().build();
+        } catch (SQLException | IOException throwables) {
+            throw new Exception();
+        }
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateUser(UserDTO userDTO) throws Exception {
+        try {
+            UserDAO.getInstance().updateUserName(userDTO);
+            UserDAO.getInstance().updateUserPassword(userDTO);
+            UserDAO.getInstance().updateUserCpr(userDTO);
+            UserDAO.getInstance().updateUserInitials(userDTO);
+            return Response.ok().build();
+        } catch (SQLException | IOException throwables) {
+            throw new Exception();
+        }
+    }
+
+
 }
