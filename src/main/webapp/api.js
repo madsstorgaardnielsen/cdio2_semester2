@@ -22,8 +22,12 @@ function loadUsers() {
             $.each(data, function (i, element) {
                 $("#userTable").append(generateUserHTML(element));
             });
+        }, function (xhr, statusmsg, errormsg) {
+        alert(xhr.responseJSON.message)
         }
-    );
+    )
+
+
 }
 
 
@@ -34,6 +38,7 @@ function generateUserHTML(user) {
         '<td class = lastName>' + user.lastName + '</td>' +
         '<td class = ini>' + user.initials + '</td>' +
         '<td class = cpr>' + user.cpr + '</td>' +
+        '<td class = password>' + user.password + '</td>' +
         '<td> <form action="' +  + '"> <input type="submit" value="Delete"> </form>  </td>' +
         '<td> <form action="' +  + '"> <input type="submit" value="Edit"> </form> </td> </tr>'
 }

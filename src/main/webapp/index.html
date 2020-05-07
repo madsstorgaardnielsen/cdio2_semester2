@@ -5,8 +5,11 @@
     <link rel="stylesheet" type="text/css" href="Style.css">
     <meta charset="UTF-8">
     <title>UserOverview</title>
+    <script src="jquery-3.3.1.js"></script>
+    <script src="Agent.js"></script>
+    <script src="api.js"></script>
 </head>
-<body onload="loadUsers()">
+<body onload="javasrcipt:loadUsers()">
 
 
 <h1>User Overview</h1>
@@ -70,6 +73,12 @@
     </tr>
     -->
 </table>
+</div>
+
+<div>
+    <form action="javascript: loadUsers()">
+        <button type="submit">Loadusers</button>
+    </form>
 </div>
 </body>
 </html>
