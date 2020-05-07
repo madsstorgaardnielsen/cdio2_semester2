@@ -43,7 +43,7 @@ public class UserService {
             UserDAO.getInstance().addUser(userDTO);
             return Response.ok().build();
         } catch (SQLException | IOException throwables) {
-            throw new Exception();
+            return Response.serverError().build();
         }
     }
 

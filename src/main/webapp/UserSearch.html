@@ -5,20 +5,46 @@
 </form>
 <head>
     <link rel="stylesheet" type="text/css" href="Style.css">
+    <script src="jquery-3.3.1.js"></script>
+    <script src="Agent.js"></script>
+    <script src="api.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+<body id="searchBody">
 <h1> Search for a User</h1>
 <label>Fill in atleast one of the forms</label><br>
-<input type="text" placeholder="UserID"><br>
-<input type="text" placeholder="UserName"><br>
+<form action="javascript:searchforUser()">
+<input type="text" placeholder="UserID" id="searchId"><br>
+
+<!--<input type="text" placeholder="UserName"><br>
 <input type="text" placeholder="First Name"><br>
 <input type="text" placeholder="Last name"><br>
-<input type="text" placeholder="Role"><br>
-<input id="submitButton" type="submit" value="Search">
+<input type="text" placeholder="Role"><br>-->
+    <button type="submit">Seacrh</button>
+</form>
 
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Bruger ID</th>
+            <th>Rolle</th>
+            <th>Fornavn</th>
+            <th>Efternavn</th>
+            <th>Initialer</th>
+            <th>CPR-Nr</th>
+            <th>Password</th>
 
+            <th colspan="2">Actions</th> <!-- Ekstra tom celle, så de matcher tabelstørrelsen-->
+        </tr>
+        </thead>
+        <!-- Bruger 1 -->
+        <tbody id="answer">
+
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>

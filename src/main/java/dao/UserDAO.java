@@ -93,15 +93,14 @@ public class UserDAO {
     }
 
     public void addUser(UserDTO user) throws IOException, SQLException {
-        String addUser = "{call addUser(?,?,?,?,?,?,?)}";
+        String addUser = "{call addUser(?,?,?,?,?,?)}";
         PreparedStatement statement = database.callableStatement(addUser);
-        statement.setInt(1,user.getUserId());
-        statement.setString(2,user.getFirstName());
-        statement.setString(3,user.getLastName());
-        statement.setString(4,user.getInitials());
-        statement.setString(5,user.getCpr());
-        statement.setString(6,user.getRole());
-        statement.setString(7,user.getPassword());
+        statement.setString(1,user.getFirstName());
+        statement.setString(2,user.getLastName());
+        statement.setString(3,user.getInitials());
+        statement.setString(4,user.getCpr());
+        statement.setString(5,user.getRole());
+        statement.setString(6,user.getPassword());
         try {
             statement.executeUpdate();
             System.out.println("User successfully added to database");

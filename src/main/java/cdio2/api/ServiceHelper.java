@@ -17,6 +17,8 @@ public class ServiceHelper {
      */
 
     public boolean checkCPR(String cpr) {
+        System.out.println("damn it went wrong1");
+
         if (cpr.length() != 10) {
             return false; //wrong length
         }
@@ -36,10 +38,10 @@ public class ServiceHelper {
         if (role.equals("")) {
             return false; //user must have a role
         }
-        if (!(role.equals("Pharmacist") ||
-                role.equals("Admin") ||
-                role.equals("Foreman") ||
-                role.equals("Operator"))) {
+        if (!(role.equals("pharmaceut") ||
+                role.equals("admin") ||
+                role.equals("produktionsleder") ||
+                role.equals("laborant"))) {
 
             return false; //atleast one role is not viable
         }
