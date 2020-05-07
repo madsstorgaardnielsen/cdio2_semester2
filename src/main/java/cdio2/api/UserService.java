@@ -12,6 +12,7 @@ import java.sql.SQLException;
 
 @Path("user")
 public class UserService {
+    ServiceHelper helper = new ServiceHelper(); //helper for check of input in creation and updating
 
     @GET
     @Path("{id}")
@@ -30,6 +31,15 @@ public class UserService {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addUser(UserDTO userDTO) throws Exception {
         try {
+            if(!helper.checkCPR(userDTO.getCpr())){
+                //if cpr not ok
+                return Response.status(400, "CPR must be number of length 10").build();
+            }
+            else if(!helper.checkRoles(userDTO.getRole())){
+                //if role not ok
+                return Response.status(400, "Role must be Admin, Pharmaceut, Produktionsleder or Laborant").build();
+            }
+            //only reached if input is ok.
             UserDAO.getInstance().addUser(userDTO);
             return Response.ok().build();
         } catch (SQLException | IOException throwables) {
@@ -54,6 +64,17 @@ public class UserService {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateUser(@PathParam("id") int id) throws Exception {
         try {
+            /* NEED TO FIX METHODD INPUT TO OBTAIN THE NEW DATA FOR THE UPDATED USER FIRST
+            if(!helper.checkCPR(userDTO.getCpr())){
+                //if cpr not ok
+                return Response.status(400, "CPR must be number of length 10").build();
+            }
+            else if(!helper.checkRoles(userDTO.getRole())){
+                //if role not ok
+                return Response.status(400, "Role must be Admin, Pharmaceut, Produktionsleder or Laborant").build();
+            }
+            reach here only if inputs were ok. BELOW METHODS NEED FIX (updateUserX(id, X);
+            */
             UserDAO.getInstance().updateUserName(id);
             UserDAO.getInstance().updateUserPassword(id);
             UserDAO.getInstance().updateUserCpr(id);
