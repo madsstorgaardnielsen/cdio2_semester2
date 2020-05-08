@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class UserController {
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
     private UserDTO userDTO;
     private static UserController instance;
 
