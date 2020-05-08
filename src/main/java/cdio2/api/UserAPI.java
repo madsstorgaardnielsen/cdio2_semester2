@@ -32,14 +32,14 @@ public class UserAPI {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addUser(UserDTO userDTO) throws Exception {
         try {
-/*            if(!helper.checkCPR(userDTO.getCpr())){
+            if(!helper.checkCPR(userDTO.getCpr())){
                 //if cpr not ok
                 return Response.status(400, "CPR must be number of length 10").build();
             }
             else if(!helper.checkRoles(userDTO.getRole())){
                 //if role not ok
                 return Response.status(400, "Role must be Admin, Pharmaceut, Produktionsleder or Laborant").build();
-            }*/
+            }
             //only reached if input is ok.
             UserDAO.getInstance().addUser(userDTO);
             return Response.ok().build();
@@ -63,7 +63,7 @@ public class UserAPI {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateUser(UserDTO userDTO) throws Exception {
-/*        try {
+        try {
              //NEED TO FIX METHODD INPUT TO OBTAIN THE NEW DATA FOR THE UPDATED USER FIRST
             if(!helper.checkCPR(userDTO.getCpr())){
                 //if cpr not ok
@@ -72,7 +72,7 @@ public class UserAPI {
             else if(!helper.checkRoles(userDTO.getRole())){
                 //if role not ok
                 return Response.status(400, "Role must be Admin, Pharmaceut, Produktionsleder or Laborant").build();
-            }*/
+            }
         UserController.getInstance().updateUserName(userDTO.getUserId(),userDTO.getFirstName(),userDTO.getLastName());
         UserController.getInstance().updateUserPassword(userDTO.getUserId(),userDTO.getPassword());
         UserController.getInstance().updateUserCpr(userDTO.getUserId(),userDTO.getCpr());
@@ -80,8 +80,8 @@ public class UserAPI {
 
         System.out.println("User successfully updated");
         return Response.ok().build();
-/*        } catch (SQLException | IOException throwables) {
+        } catch (SQLException | IOException throwables) {
             throw new Exception();
-        }*/
+        }
     }
 }

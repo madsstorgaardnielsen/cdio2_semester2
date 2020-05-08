@@ -12,13 +12,14 @@ public class InputValidation {
      */
 
     public boolean checkCPR(String cpr) {
-        System.out.println("damn it went wrong1");
 
         if (cpr.length() != 10) {
+            System.out.println("damn it went wrong!");
             return false; //wrong length
         }
         for (int i = 0; i < cpr.length(); i++) {
             if (cpr.charAt(i) > '9' || cpr.charAt(i) < '0') {
+                System.out.println("damn it went wrong!");
                 return false; //cannot contain characters other than numbers
             }
         }
