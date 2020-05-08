@@ -124,7 +124,6 @@ public class UserDAO {
     }
 
     public void updateUserName(UserDTO userDTO) throws IOException, SQLException {
-        UserDAO userDAO = new UserDAO();
         String updateUserName = "{call updateUserName(?,?,?)}";
         statement = database.prepareStatement(updateUserName);
         statement.setInt(1, userDTO.getUserId());
@@ -140,7 +139,6 @@ public class UserDAO {
     }
 
     public void updateUserCpr(UserDTO userDTO) throws IOException, SQLException {
-        UserDAO userDAO = new UserDAO();
         String updateUserCpr = "{call updateUserCpr(?,?)}";
         statement = database.prepareStatement(updateUserCpr);
         statement.setInt(1, userDTO.getUserId());
@@ -155,7 +153,6 @@ public class UserDAO {
     }
 
     public void updateUserPassword(UserDTO userDTO) throws IOException, SQLException {
-        UserDAO userDAO = new UserDAO();
         String updateUserPassword = "{call updateUserPassword(?,?)}";
         statement = database.prepareStatement(updateUserPassword);
         statement.setInt(1, userDTO.getUserId());
@@ -170,7 +167,6 @@ public class UserDAO {
     }
 
     public void updateUserInitials(UserDTO userDTO) throws IOException, SQLException {
-        UserDAO userDAO = new UserDAO();
         String updateUserInitials = "{call updateUserInitials(?,?)}";
         statement = database.prepareStatement(updateUserInitials);
         statement.setInt(1, userDTO.getUserId());
