@@ -34,7 +34,8 @@ function loadUsers() {
 }
 
 function generateUserHTML(user) {
-    return '<tr> <td class = userId>' + user.userId + '</td>' +
+    return '<tr id="'+user.userId+'"> ' +
+        '<td class = userId>' + user.userId + '</td>' +
         '<td class = role>' + user.role + '</td>' +
         '<td class = firstName>' + user.firstName + '</td>' +
         '<td class = lastName>' + user.lastName + '</td>' +
@@ -42,7 +43,12 @@ function generateUserHTML(user) {
         '<td class = cpr>' + user.cpr + '</td>' +
         '<td class = password>' + user.password + '</td>' +
         '<td> <form action="javascript:deleteUser(' + user.userId + ')"> <button type="submit">Delete</button> </form>  </td>' +
-        '<td> <form> <button type="submit">Edit</button> </form> </td> </tr>'
+        '<td> <form action="UpdateUser.html"> <button class="btn btn-info btn_add" type="submit">Edit</button> </form> </td> </tr>'
+}
+
+function updateUser(rowId)
+{
+
 }
 
 function deleteUser(userId) {
@@ -66,5 +72,26 @@ function searchforUser() {
         }
     )
 }
+
+function updateUser() {
+        var userInfo = {}
+        userInfo.userId = $("#userid").val();
+        userInfo.firstName = $("#firstname").val();
+        userInfo.lastName = $("#lastname").val();
+        userInfo.initials = $("#initials").val();
+        userInfo.cpr = $("#cpr").val();
+        userInfo.password = $("#password").val();
+        userInfo.role = $("#roller").val();
+        Agent.putJson('rest/user', userInfo, function (data) {
+            $("#Message").empty();
+            $("#Message").append('<label>Bruger tilføjet</label>');
+        }, function (xhr, statusmsg, errormsg) {
+            $("#Message").empty();
+            $("#Message").append('<label>Fejl opstod, bruger ikke tilføjet</label>');
+
+            alert(xhr.responseJSON.message);
+        });
+}
+
 
 

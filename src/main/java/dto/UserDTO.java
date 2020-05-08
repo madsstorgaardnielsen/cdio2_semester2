@@ -12,6 +12,7 @@ public class UserDTO implements Serializable {
     String role;
     private static final long serialVersionUID = 4545864587995944260L;
 
+
     public UserDTO(int userId, String firstName, String lastName, String initials, String cpr, String password) {
         this.userId = userId;
         this.firstName = firstName;

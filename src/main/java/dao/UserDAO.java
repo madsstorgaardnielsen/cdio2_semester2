@@ -123,13 +123,13 @@ public class UserDAO {
         }
     }
 
-    public void updateUserName(int id) throws IOException, SQLException {
+    public void updateUserName(UserDTO userDTO) throws IOException, SQLException {
         UserDAO userDAO = new UserDAO();
         String updateUserName = "{call updateUserName(?,?,?)}";
         statement = database.prepareStatement(updateUserName);
-        statement.setInt(1, userDAO.getUserById(id).getUserId());
-        statement.setString(2, userDAO.getUserById(id).getFirstName());
-        statement.setString(3, userDAO.getUserById(id).getLastName());
+        statement.setInt(1, userDTO.getUserId());
+        statement.setString(2, userDTO.getFirstName());
+        statement.setString(3, userDTO.getLastName());
 
         try {
             statement.executeUpdate();
@@ -139,12 +139,12 @@ public class UserDAO {
         }
     }
 
-    public void updateUserCpr(int id) throws IOException, SQLException {
+    public void updateUserCpr(UserDTO userDTO) throws IOException, SQLException {
         UserDAO userDAO = new UserDAO();
         String updateUserCpr = "{call updateUserCpr(?,?)}";
         statement = database.prepareStatement(updateUserCpr);
-        statement.setInt(1, userDAO.getUserById(id).getUserId());
-        statement.setString(2, userDAO.getUserById(id).getCpr());
+        statement.setInt(1, userDTO.getUserId());
+        statement.setString(2, userDTO.getCpr());
 
         try {
             statement.executeUpdate();
@@ -154,12 +154,12 @@ public class UserDAO {
         }
     }
 
-    public void updateUserPassword(int id) throws IOException, SQLException {
+    public void updateUserPassword(UserDTO userDTO) throws IOException, SQLException {
         UserDAO userDAO = new UserDAO();
         String updateUserPassword = "{call updateUserPassword(?,?)}";
         statement = database.prepareStatement(updateUserPassword);
-        statement.setInt(1, userDAO.getUserById(id).getUserId());
-        statement.setString(2, userDAO.getUserById(id).getPassword());
+        statement.setInt(1, userDTO.getUserId());
+        statement.setString(2, userDTO.getPassword());
 
         try {
             statement.executeUpdate();
@@ -169,12 +169,12 @@ public class UserDAO {
         }
     }
 
-    public void updateUserInitials(int id) throws IOException, SQLException {
+    public void updateUserInitials(UserDTO userDTO) throws IOException, SQLException {
         UserDAO userDAO = new UserDAO();
         String updateUserInitials = "{call updateUserInitials(?,?)}";
         statement = database.prepareStatement(updateUserInitials);
-        statement.setInt(1, userDAO.getUserById(id).getUserId());
-        statement.setString(2, userDAO.getUserById(id).getInitials());
+        statement.setInt(1, userDTO.getUserId());
+        statement.setString(2, userDTO.getInitials());
 
         try {
             statement.executeUpdate();
@@ -183,6 +183,10 @@ public class UserDAO {
             throw new IOException("Something went wrong when updating user");
         }
     }
+
+/*    private void updateUser(UserDTO userDTO) {
+        String updateUser = "UPDATE users SET name ="
+    }*/
 
     private void getUserInfo(ResultSet rs, UserDTO userDTO) throws SQLException {
         userDTO.setUserId(rs.getInt(1));
