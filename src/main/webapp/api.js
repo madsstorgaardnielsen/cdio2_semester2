@@ -28,11 +28,9 @@ function loadUsers() {
                 $("#userTableBody").append(generateUserHTML(this));
             });
         }, function (xhr, statusmsg, errormsg) {
-        alert(xhr.responseJSON.message)
+            alert(xhr.responseJSON.message)
         }
     )
-
-
 }
 
 function generateUserHTML(user) {
@@ -48,17 +46,25 @@ function generateUserHTML(user) {
 }
 
 function deleteUser(userId) {
-    Agent.postJson('rest/user/'+ userId, 0, function(data) {
-        loadUsers();
-    }, function(xhr, statusmsg, errormsg) {
-        })
+    var answer = window.confirm("Vil du slette bruger med id: " + userId)
+    if (answer) {
+        Agent.postJson('rest/user/' + userId, 0, function (data) {
+            loadUsers();
+        }, function (xhr, statusmsg, errormsg) {
+        });
+        window.alert("Bruger slettet")
+    }
 }
 
 function searchforUser() {
     $("#answer").empty();
-    Agent.getJson('rest/user/' + $("#searchId").val(), function(data) {
-        $("#answer").append(generateUserHTML(data))},
+    Agent.getJson('rest/user/' + $("#searchId").val(), function (data) {
+            $("#answer").append(generateUserHTML(data))
+        },
         function (data) {
-            $("#answer").append(generateUserHTML(data))}
-)
+            $("#answer").append(generateUserHTML(data))
+        }
+    )
 }
+
+
