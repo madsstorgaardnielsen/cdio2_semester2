@@ -43,13 +43,9 @@ function generateUserHTML(user) {
         '<td class = cpr>' + user.cpr + '</td>' +
         '<td class = password>' + user.password + '</td>' +
         '<td> <form action="javascript:deleteUser(' + user.userId + ')"> <button type="submit">Delete</button> </form>  </td>' +
-        '<td> <form action="UpdateUser.html"> <button class="btn btn-info btn_add" type="submit">Edit</button> </form> </td> </tr>'
+        '<td> <form action="UpdateUser.html?id="'+user.userId+'> <button type="submit">Edit</button> </form> </td> </tr>'
 }
 
-function updateUser(rowId)
-{
-
-}
 
 function deleteUser(userId) {
     var answer = window.confirm("Vil du slette bruger med id: " + userId)
@@ -84,10 +80,10 @@ function updateUser() {
         userInfo.role = $("#roller").val();
         Agent.putJson('rest/user', userInfo, function (data) {
             $("#Message").empty();
-            $("#Message").append('<label>Bruger tilføjet</label>');
+            $("#Message").append('<label>Bruger opdateret</label>');
         }, function (xhr, statusmsg, errormsg) {
             $("#Message").empty();
-            $("#Message").append('<label>Fejl opstod, bruger ikke tilføjet</label>');
+            $("#Message").append('<label>Fejl opstod, bruger ikke opdateret</label>');
 
             alert(xhr.responseJSON.message);
         });

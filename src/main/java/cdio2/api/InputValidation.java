@@ -1,14 +1,9 @@
 package cdio2.api;
 
 
-import dao.IUserDAO;
-import dto.UserDTO;
+public class InputValidation {
 
-import java.util.ArrayList;
-
-public class ServiceHelper {
-
-    public ServiceHelper() {
+    public InputValidation() {
     }
     /*
     ***

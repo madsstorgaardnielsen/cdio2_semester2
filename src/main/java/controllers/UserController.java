@@ -1,6 +1,6 @@
 package controllers;
 
-import dao.UserDAO;
+import database.UserDAO;
 import dto.UserDTO;
 
 import java.io.IOException;
@@ -9,8 +9,22 @@ import java.sql.SQLException;
 public class UserController {
     private UserDAO userDAO;
     private UserDTO userDTO;
+    private static UserController instance;
 
-    public UserController() throws SQLException {
+    static {
+        try {
+            instance = new UserController();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public static UserController getInstance()
+    {
+        return instance;
+    }
+
+    private UserController() throws SQLException {
         this.userDAO = new UserDAO();
         this.userDTO = new UserDTO();
     }

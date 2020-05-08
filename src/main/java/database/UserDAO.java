@@ -1,5 +1,4 @@
-package dao;
-import database.DBConnection;
+package database;
 import dto.UserDTO;
 
 import java.io.IOException;
