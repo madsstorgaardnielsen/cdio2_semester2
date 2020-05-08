@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="Style.css">
+    <script src="jquery-3.3.1.js"></script>
+    <script src="Agent.js"></script>
+    <script src="api.js"></script>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+</head>
+<body>
+
+
+<h1>Opdater bruger</h1>
+<!-- Text fields for user-->
+<form id="editUser" class="form" action="javascript:updateUser()">
+    <input type="text" placeholder="User ID" id="userid"><br>
+    <input type="text" placeholder="First Name" id="firstname"><br>
+    <input type="text" placeholder="Last name" id="lastname"><br>
+    <input type="text" placeholder="Intialer" id="initials"><br> <!-- skal potentielt ikke være her  -->
+    <input type="text" placeholder="CPR-Nr" id="cpr"><br>
+    <input type="text" placeholder="Password" id="password"><br>
+
+
+<!--    <input type="checkbox" id="Administrator" value="Administrator">
+    <label for="Administrator">Administrator</label><br>
+    <input type="checkbox" id="Pharmaceut" value="’Pharmaceut’">
+    <label for="Pharmaceut">Pharmaceut</label><br>
+    <input type="checkbox" id="Production leader" value="Production leader">
+    <label for="Production leader">Production leader</label><br>
+    <input type="checkbox" id="Laboratory technician" value="Laboratory technician">
+    <label for="Laboratory technician">Laboratory technician</label>-->
+
+        <select id="roller">
+            <option value="admin">Admin</option>
+            <option value="pharmaceut">Pharmaceut</option>
+            <option value="produktionsleder">Produktionsleder</option>
+            <option value="laborant">Laborant</option>
+        </select>
+
+    <div></div>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
