@@ -43,7 +43,7 @@ function generateUserHTML(user) {
         '<td class = cpr>' + user.cpr + '</td>' +
         '<td class = password>' + user.password + '</td>' +
         '<td> <form action="javascript:deleteUser(' + user.userId + ')"> <button type="submit">Delete</button> </form>  </td>' +
-        '<td> <form action="UpdateUser.html?id="'+user.userId+'> <button type="submit">Edit</button> </form> </td> </tr>'
+        '<td> <form action="UpdateUser.html> <button type="submit">Edit</button> </form> </td> </tr>'
 }
 
 
