@@ -18,29 +18,8 @@ public class UserAPI {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUser(UserDTO userDTO) throws Exception {
-        try {
-            System.out.println("1");
-            if (!(userDTO.getFirstName().equals("undefined"))) {
-                return Response.ok(new UserDAO().getUserByFirstName(userDTO.getFirstName())).build();
-            }
-            System.out.println("2");
-            if (!userDTO.getLastName().equals("undefined")) {
-                return Response.ok(new UserDAO().getUserByLastName(userDTO.getLastName())).build();
-            }
-            if (!userDTO.getInitials().equals("undefined")) {
-                return Response.ok(new UserDAO().getUserByInitials(userDTO.getInitials())).build();
-            }
-            if (!userDTO.getRole().equals("undefined")) {
-                return Response.ok(new UserDAO().getUserByRole(userDTO.getRole())).build();
-            }
-            if (!(userDTO.getUserId() == -1)) {
-                return Response.ok(new UserDAO().getUserById(userDTO.getUserId())).build();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        throw new Exception();
+    public Response getUser(@PathParam("id") int id) throws Exception {
+            return Response.ok(new UserDAO().getUserById(id)).build();
     }
 
     @GET

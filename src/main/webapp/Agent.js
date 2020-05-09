@@ -19,7 +19,7 @@ Agent.getSearchJson = function(url, data, success, error){
 		method: 'GET',
 		data: JSON.stringify(data),
 		success: success,
-		contentType: 'application/json',
+		contentType:'application/json',
 		error: error
 	})
 }

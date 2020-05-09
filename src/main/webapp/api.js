@@ -44,7 +44,7 @@ function generateUserHTML(user) {
         '<td class = cpr>' + user.cpr + '</td>' +
         '<td class = password>' + user.password + '</td>' +
         '<td> <form action="javascript:deleteUser(' + user.userId + ')"> <button type="submit">Delete</button> </form>  </td>' +
-        '<td> <form action="UpdateUser.html?id="'+user.userId+'> <button type="submit">Edit</button> </form> </td> </tr>'
+        '<td> <form action="UpdateUser.html"> <button type="submit">Edit</button> </form> </td> </tr>'
 }
 
 function deleteUser(userId) {
@@ -60,23 +60,11 @@ function deleteUser(userId) {
 
 function searchforUser() {
     $("#answer").empty();
-    var searchObject = {}
-    //if (($("#searchId").val()).localeCompare("undefined")){
-        searchObject.userId = 13;
-    //} else {searchObject.userId = $("#searchId").val();}
-    searchObject.firstName = $("#searchFirstName").val();
-    searchObject.lastName = $("#searchLastName").val();
-    searchObject.initials = $("#searchIni").val();
-    searchObject.cpr = "2738472691";
-    searchObject.password = "qwerty";
-    searchObject.role = $("#searchRole").val();
 
-
-    Agent.getSearchJson('rest/user/1', searchObject, function(data) {
-        $.each(data, function () {
-        $("#answer").append(generateUserHTML(this))})},
+    Agent.getJson('rest/user/' + $("#searchId").val(), function(data) {
+        $("#answer").append(generateUserHTML(data))},
         function () {
-            $("#answer").append('<tr><td>Fail</td></tr>')}
+            $("#answer").append('<tr><td>' + searchObject.firstName + '</td></tr>')}
 )
 }
 
