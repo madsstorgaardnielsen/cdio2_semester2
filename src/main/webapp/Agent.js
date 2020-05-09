@@ -12,6 +12,18 @@ Agent.getJson = function(url, success, error){
 		error:error
 	})
 }
+
+Agent.getSearchJson = function(url, data, success, error){
+	$.ajax({
+		url:url,
+		method: 'GET',
+		data: JSON.stringify(data),
+		success: success,
+		contentType: 'application/json',
+		error: error
+	})
+}
+
 Agent.postJson = function(url, data, success, error){
 	$.ajax({
 		url:url,

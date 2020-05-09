@@ -56,9 +56,22 @@ function deleteUser(userId) {
 
 function searchforUser() {
     $("#answer").empty();
-    Agent.getJson('rest/user/' + $("#searchId").val(), function(data) {
-        $("#answer").append(generateUserHTML(data))},
-        function (data) {
-            $("#answer").append(generateUserHTML(data))}
+    var searchObject = {}
+    //if (($("#searchId").val()).localeCompare("undefined")){
+        searchObject.userId = 13;
+    //} else {searchObject.userId = $("#searchId").val();}
+    searchObject.firstName = $("#searchFirstName").val();
+    searchObject.lastName = $("#searchLastName").val();
+    searchObject.initials = $("#searchIni").val();
+    searchObject.cpr = "2738472691";
+    searchObject.password = "qwerty";
+    searchObject.role = $("#searchRole").val();
+
+
+    Agent.getSearchJson('rest/user/1', searchObject, function(data) {
+        $.each(data, function () {
+        $("#answer").append(generateUserHTML(this))})},
+        function () {
+            $("#answer").append('<tr><td>Fail</td></tr>')}
 )
 }

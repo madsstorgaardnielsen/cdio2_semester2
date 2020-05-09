@@ -31,6 +31,74 @@ public class UserDAO {
         return instance;
     }
 
+    public ArrayList<UserDTO> getUserByFirstName(String firstName) throws SQLException {
+        ArrayList<UserDTO> userList = new ArrayList<>();
+        CallableStatement stmt = database.callableStatement("{call getUserByFirstName(" + firstName + ")}");
+        ResultSet rs = stmt.executeQuery();
+        UserDTO userDTO;
+        try {
+        while (rs.next()) {
+            userDTO = new UserDTO();
+            getUserInfo(rs, userDTO);
+            userList.add(userDTO);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+        return userList;
+    }
+
+    public ArrayList<UserDTO> getUserByLastName(String lastName) throws SQLException {
+        ArrayList<UserDTO> userList = new ArrayList<>();
+        CallableStatement stmt = database.callableStatement("{call getUserByLastName(" + lastName + ")}");
+        ResultSet rs = stmt.executeQuery();
+        UserDTO userDTO;
+        try {
+            while (rs.next()) {
+                userDTO = new UserDTO();
+                getUserInfo(rs, userDTO);
+                userList.add(userDTO);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
+    public ArrayList<UserDTO> getUserByRole(String role) throws SQLException {
+        ArrayList<UserDTO> userList = new ArrayList<>();
+        CallableStatement stmt = database.callableStatement("{call getUserByRole(" + role + ")}");
+        ResultSet rs = stmt.executeQuery();
+        UserDTO userDTO;
+        try {
+            while (rs.next()) {
+                userDTO = new UserDTO();
+                getUserInfo(rs, userDTO);
+                userList.add(userDTO);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
+    public ArrayList<UserDTO> getUserByInitials(String Initials) throws SQLException {
+        ArrayList<UserDTO> userList = new ArrayList<>();
+        CallableStatement stmt = database.callableStatement("{call getUserByInitials(" + Initials + ")}");
+        ResultSet rs = stmt.executeQuery();
+        UserDTO userDTO;
+        try {
+            while (rs.next()) {
+                userDTO = new UserDTO();
+                getUserInfo(rs, userDTO);
+                userList.add(userDTO);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
     public UserDTO getUserById(int id) throws SQLException {
         CallableStatement statement = database.callableStatement("{call getUserByID(" + id + ")}");
         ResultSet rs = statement.executeQuery();
