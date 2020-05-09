@@ -1,6 +1,7 @@
 package cdio2.api;
 
-import dao.UserDAO;
+import controllers.UserController;
+import database.UserDAO;
 import dto.UserDTO;
 
 import javax.ws.rs.*;
@@ -11,8 +12,8 @@ import java.sql.SQLException;
 
 
 @Path("user")
-public class UserService {
-    ServiceHelper helper = new ServiceHelper(); //helper for check of input in creation and updating
+public class UserAPI {
+    InputValidation helper = new InputValidation(); //helper for check of input in creation and updating
 
     @GET
     @Path("{id}")
@@ -81,11 +82,10 @@ public class UserService {
     }
 
     @PUT
-    @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateUser(@PathParam("id") int id) throws Exception {
+    public Response updateUser(UserDTO userDTO) throws Exception {
         try {
-            /* NEED TO FIX METHODD INPUT TO OBTAIN THE NEW DATA FOR THE UPDATED USER FIRST
+             //NEED TO FIX METHODD INPUT TO OBTAIN THE NEW DATA FOR THE UPDATED USER FIRST
             if(!helper.checkCPR(userDTO.getCpr())){
                 //if cpr not ok
                 return Response.status(400, "CPR must be number of length 10").build();
@@ -94,13 +94,13 @@ public class UserService {
                 //if role not ok
                 return Response.status(400, "Role must be Admin, Pharmaceut, Produktionsleder or Laborant").build();
             }
-            reach here only if inputs were ok. BELOW METHODS NEED FIX (updateUserX(id, X);
-            */
-            UserDAO.getInstance().updateUserName(id);
-            UserDAO.getInstance().updateUserPassword(id);
-            UserDAO.getInstance().updateUserCpr(id);
-            UserDAO.getInstance().updateUserInitials(id);
-            return Response.ok().build();
+        UserController.getInstance().updateUserName(userDTO.getUserId(),userDTO.getFirstName(),userDTO.getLastName());
+        UserController.getInstance().updateUserPassword(userDTO.getUserId(),userDTO.getPassword());
+        UserController.getInstance().updateUserCpr(userDTO.getUserId(),userDTO.getCpr());
+        UserController.getInstance().updateUserInitials(userDTO.getUserId(),userDTO.getInitials());
+
+        System.out.println("User successfully updated");
+        return Response.ok().build();
         } catch (SQLException | IOException throwables) {
             throw new Exception();
         }
