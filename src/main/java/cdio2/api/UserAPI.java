@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 @Path("user")
 public class UserAPI {
-    InputValidation helper = new InputValidation(); //helper for check of input in creation and updating
+    private InputValidation helper = new InputValidation(); //helper for check of input in creation and updating
 
     @GET
     @Path("{id}")
