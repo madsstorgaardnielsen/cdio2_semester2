@@ -19,8 +19,8 @@ public class UserAPI {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUser(@PathParam("id") int id) throws SQLException {
-        return Response.ok(new UserDAO().getUserById(id)).build();
+    public Response getUser(@PathParam("id") int id) throws Exception {
+            return Response.ok(new UserDAO().getUserById(id)).build();
     }
 
     @GET

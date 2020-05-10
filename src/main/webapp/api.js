@@ -18,7 +18,6 @@ function addUser() {
     });
 }
 
-
 function loadUsers() {
     $("#userTableBody").empty();
     //Hints: $.each(data, function(i, element){ } iterates over a JSON-collection (data).
@@ -35,8 +34,7 @@ function loadUsers() {
 }
 
 function generateUserHTML(user) {
-    return'<tr> ' +
-        '<td class = userId>' + user.userId + '</td>' +
+    return '<tr> <td class = userId>' + user.userId + '</td>' +
         '<td class = role>' + user.role + '</td>' +
         '<td class = firstName>' + user.firstName + '</td>' +
         '<td class = lastName>' + user.lastName + '</td>' +
@@ -44,8 +42,9 @@ function generateUserHTML(user) {
         '<td class = cpr>' + user.cpr + '</td>' +
         '<td class = password>' + user.password + '</td>' +
         '<td> <form action="javascript:deleteUser(' + user.userId + ')"> <button type="submit">Delete</button> </form>  </td>' +
-        '<td> <button id="edituserbtn" class="editbtn">Edit</button> </td> </tr>'
+        '<td> <form action="UpdateUser.html"> <button type="submit">Edit</button> </form> </td> </tr>'
 }
+
 
 function deleteUser(userId) {
     var answer = window.confirm("Vil du slette bruger med id: " + userId)
