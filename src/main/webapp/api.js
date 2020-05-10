@@ -3,9 +3,9 @@ function addUser() {
     userInfo.userId = 0;
     userInfo.firstName = $("#firstname").val();
     userInfo.lastName = $("#lastname").val();
-    userInfo.initials = $("#initials").val();
+    /*userInfo.initials = $("#initials").val();*/
     userInfo.cpr = $("#cpr").val();
-    userInfo.password = $("#password").val();
+    /*userInfo.password = $("#password").val();*/
     userInfo.role = $("#roller").val();
     Agent.postJson('rest/user', userInfo, function (data) {
         $("#Message").empty();
@@ -31,8 +31,6 @@ function loadUsers() {
             alert(xhr.responseJSON.message)
         }
     )
-
-
 }
 
 function generateUserHTML(user) {
@@ -47,6 +45,7 @@ function generateUserHTML(user) {
         '<td class = edit> <button class="editbutton">Edit</button> </td> </tr>'
 }
 
+
 function deleteUser(userId) {
     var answer = window.confirm("Vil du slette bruger med id: " + userId)
     if (answer) {
@@ -60,12 +59,13 @@ function deleteUser(userId) {
 
 function searchforUser() {
     $("#answer").empty();
-
-    Agent.getJson('rest/user/' + $("#searchId").val(), function(data) {
-        $("#answer").append(generateUserHTML(data))},
-        function () {
-            $("#answer").append('<tr><td>' + searchObject.firstName + '</td></tr>')}
-)
+    Agent.getJson('rest/user/' + $("#searchId").val(), function (data) {
+            $("#answer").append(generateUserHTML(data))
+        },
+        function (data) {
+            $("#answer").append(generateUserHTML(data))
+        }
+    )
 }
 
 function updateUser(userInfo) {

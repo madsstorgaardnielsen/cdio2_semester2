@@ -1,4 +1,7 @@
 package database;
+
+import controllers.InitialsGenerator;
+import controllers.PasswordGenerator;
 import dto.UserDTO;
 
 import java.io.IOException;
@@ -9,8 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UserDAO {
-    private DBConnection database;
-    PreparedStatement statement;
     private static UserDAO instance;
 
     static {
@@ -21,12 +22,14 @@ public class UserDAO {
         }
     }
 
+    PreparedStatement statement;
+    private DBConnection database;
+
     public UserDAO() throws SQLException {
         database = new DBConnection();
     }
 
-    public static UserDAO getInstance()
-    {
+    public static UserDAO getInstance() {
         return instance;
     }
 
@@ -133,12 +136,12 @@ public class UserDAO {
     public void AddRoleToUser(int id, String role) throws IOException, SQLException {
         String addRoleToUser = "{call addRoleToUser(?,?)}";
         PreparedStatement statement = database.callableStatement(addRoleToUser);
-        statement.setInt(1,id);
-        statement.setString(2,role);
+        statement.setInt(1, id);
+        statement.setString(2, role);
 
         try {
             statement.executeUpdate();
-            System.out.println("Role successfully added to userid: "+id);
+            System.out.println("Role successfully added to userid: " + id);
         } catch (Exception e) {
             e.printStackTrace();
             throw new IOException("Something went wrong with createUser()");
@@ -149,25 +152,31 @@ public class UserDAO {
         String deleteUserRole = "{call deleteuserrole(?,?)}";
         PreparedStatement statement = database.prepareStatement(deleteUserRole);
         statement.setInt(1, id);
-        statement.setString(2,role);
+        statement.setString(2, role);
 
         try {
             statement.executeUpdate();
-            System.out.println("Role: "+role+" successfully removed from user with id: "+id);
+            System.out.println("Role: " + role + " successfully removed from user with id: " + id);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void addUser(UserDTO user) throws IOException, SQLException {
+        PasswordGenerator passwordGenerator = new PasswordGenerator();
+        InitialsGenerator initialsGenerator = new InitialsGenerator();
+        String initials = initialsGenerator.generateInitials(user.getFirstName(), user.getLastName(), user.getCpr());
+        String password = passwordGenerator.generatePassword();
+
         String addUser = "{call addUser(?,?,?,?,?,?)}";
         PreparedStatement statement = database.callableStatement(addUser);
         statement.setString(1,user.getFirstName());
         statement.setString(2,user.getLastName());
-        statement.setString(3,user.getInitials());
+        statement.setString(3,initials);
         statement.setString(4,user.getCpr());
         statement.setString(5,user.getRole());
-        statement.setString(6,user.getPassword());
+        statement.setString(6, password);
+
         try {
             statement.executeUpdate();
             System.out.println("User successfully added to database");
