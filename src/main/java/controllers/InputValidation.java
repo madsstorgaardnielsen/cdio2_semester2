@@ -1,4 +1,4 @@
-package cdio2.api;
+package controllers;
 
 
 public class InputValidation {
@@ -27,7 +27,7 @@ public class InputValidation {
     }
 
     public boolean checkUserName(String userName) {
-        return userName.length() >= 2 && userName.length() <= 20; //wrong length must be 2-20 characters
+        return userName.length() >= 2 && userName.length() <= 30; //wrong length must be 2-20 characters
     }
 
     public boolean checkRoles(String role) {

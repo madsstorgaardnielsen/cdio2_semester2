@@ -3,9 +3,9 @@ function addUser() {
     userInfo.userId = 0;
     userInfo.firstName = $("#firstname").val();
     userInfo.lastName = $("#lastname").val();
-    userInfo.initials = $("#initials").val();
+    /*userInfo.initials = $("#initials").val();*/
     userInfo.cpr = $("#cpr").val();
-    userInfo.password = $("#password").val();
+    /*userInfo.password = $("#password").val();*/
     userInfo.role = $("#roller").val();
     Agent.postJson('rest/user', userInfo, function (data) {
         $("#Message").empty();
