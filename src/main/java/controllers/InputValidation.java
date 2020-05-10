@@ -34,10 +34,10 @@ public class InputValidation {
         if (role.equals("")) {
             return false; //user must have a role
         }
-        if (!(role.equals("pharmaceut") ||
-                role.equals("admin") ||
-                role.equals("produktionsleder") ||
-                role.equals("laborant"))) {
+        if (!(role.equals("Pharmaceut") ||
+                role.equals("Admin") ||
+                role.equals("Produktionsleder") ||
+                role.equals("Laborant"))) {
 
             return false; //atleast one role is not viable
         }

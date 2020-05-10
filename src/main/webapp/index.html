@@ -77,7 +77,7 @@
         $("#userTable").on('click', '.okbutton', function() {
             var row = $(this).closest("tr");
             var user = {};
-            user.userId = row.find(".userId").val();
+            user.userId = row.find(".userId").text();
             user.role = row.find(".editRole").val();
             user.firstName = row.find(".editFirstName").val();
             user.lastName = row.find(".editLastName").val();

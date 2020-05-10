@@ -38,11 +38,56 @@
             <th colspan="2">Actions</th> <!-- Ekstra tom celle, så de matcher tabelstørrelsen-->
         </tr>
         </thead>
-        <!-- Bruger 1 -->
         <tbody id="answer">
 
         </tbody>
     </table>
+    <script type="text/javascript">
+        $("#answer").on('click', '.editbutton', function () {
+                var row = $(this).closest("tr");
+                var col2 = row.find(".role").text();
+                var col3 = row.find(".firstName").text();
+                var col4 = row.find(".lastName").text();
+                var col5 = row.find(".ini").text();
+                var col6 = row.find(".cpr").text();
+                var col7 = row.find(".password").text();
+
+                row.find(".role").html("<input type = text class = editRole>");
+                row.find(".firstName").html("<input type = text class = editFirstName>");
+                row.find(".lastName").html("<input type = text class = editLastName>");
+                row.find(".ini").html("<input type = text class = editIni>");
+                row.find(".cpr").html("<input type = text class = editCpr>");
+                row.find(".password").html("<input type = text class = editPassword>");
+
+                row.find(".editRole").val(col2);
+                row.find(".editFirstName").val(col3);
+                row.find(".editLastName").val(col4);
+                row.find(".editIni").val(col5);
+                row.find(".editCpr").val(col6);
+                row.find(".editPassword").val(col7);
+
+                row.find(".deletebutton").remove();
+                row.find(".edit").html("<button class = okbutton>ok</button>")
+            }
+        );
+    </script>
+    <script>
+        $("#answer").on('click', '.okbutton', function() {
+                var row = $(this).closest("tr");
+                var user = {};
+                user.userId = row.find(".userId").text();
+                user.role = row.find(".editRole").val();
+                user.firstName = row.find(".editFirstName").val();
+                user.lastName = row.find(".editLastName").val();
+                user.initials = row.find(".editIni").val();
+                user.cpr = row.find(".editCpr").val();
+                user.password = row.find(".editPassword").val();
+
+                updateUser(user);
+            }
+        )
+
+    </script>
 </div>
 
 </body>

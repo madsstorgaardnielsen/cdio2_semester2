@@ -10,11 +10,9 @@ function addUser() {
     Agent.postJson('rest/user', userInfo, function (data) {
         $("#Message").empty();
         $("#Message").append('<label>Bruger tilføjet</label>');
-    }, function (xhr, statusmsg, errormsg) {
+    }, function () {
         $("#Message").empty();
         $("#Message").append('<label>Fejl opstod, bruger ikke tilføjet</label>');
-
-        alert(xhr.responseJSON.message);
     });
 }
 
@@ -70,6 +68,7 @@ function searchforUser() {
 
 function updateUser(userInfo) {
         Agent.putJson('rest/user', userInfo, function (data) {
+            window.alert("Bruger opdateret")
             loadUsers();
         }, function () {
             window.alert("kunne ikke opdatere")

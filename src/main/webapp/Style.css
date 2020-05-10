@@ -58,6 +58,16 @@ input[type=text]{
     box-sizing: border-box;
 }
 
+#answer input[type=text]{
+    width: 100%;
+    padding: 6px;
+    line-height: 10pt;
+    margin-bottom: 10px ;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
 #submitButton[type=submit]:hover {
     background-color: red;
 
